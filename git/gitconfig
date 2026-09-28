@@ -1,0 +1,7 @@
+[init]
+    defaultBranch = main
+[user]
+	name = purexua
+	email = purexua@gmail.com
+[core]
+	editor = vim

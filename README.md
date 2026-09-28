@@ -6,9 +6,12 @@
 
 ```text
 dotfiles/
+├── git/
+│   └── gitconfig
 ├── kitty/
 │   ├── kitty.conf
 │   └── current-theme.conf
+├── .gitignore
 └── README.md
 ```
 
