@@ -93,6 +93,9 @@ brew install jless
 # Work with Protocol Buffers
 brew install bufbuild/buf/buf
 
+# Protocol Buffers compiler (protoc)
+brew install protobuf
+
 # Embedded SQL database and command-line tool
 brew install sqlite
 
@@ -151,7 +154,20 @@ brew install --cask font-symbols-only-nerd-font
 
 #### Go
 
-参考 [Go 官方安装指南](https://go.dev/doc/install) 安装。
+Download the macOS installer (`.pkg` file) from [go.dev/dl](https://go.dev/dl) and run it.
+
+#### Go Tools
+
+```sh
+# Build desktop apps with Wails v3
+go install github.com/wailsapp/wails/v3/cmd/wails3@latest
+
+# Generate Go code from Protocol Buffers
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+
+# Generate Go gRPC code from Protocol Buffers
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
 
 #### Rust
 
