@@ -1,0 +1,5 @@
+# Connect to GitHub over port 443 when port 22 is blocked
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+    User git
