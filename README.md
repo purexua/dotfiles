@@ -2,12 +2,12 @@
 
 个人开发环境配置。
 
-## 我的 macOS 配置
+## macOS 配置
 
 ### 系统设置
 
 ```sh
-# Repeat keys instead of showing the accent menu when a key is held down
+# Disable the press-and-hold accent menu
 defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Reduce the delay before key repeat starts and increase its speed
@@ -17,7 +17,7 @@ defaults write -g KeyRepeat -int 1
 # Disable natural scrolling
 defaults write -g com.apple.swipescrolldirection -bool false
 
-# Jump to the clicked position in the scroll bar
+# Jump to the clicked position when paging in a scroll bar
 defaults write -g AppleScrollerPagingBehavior -bool true
 
 # Disable automatic dash, period, and quote substitution
@@ -39,7 +39,7 @@ xcode-select --install
 
 安装后，`git`、`clang` 等命令行工具就可以使用了。
 
-以防万一，记录重新安装的方法：
+仅在需要重新安装 Xcode Command Line Tools 时，删除现有安装目录并重新运行安装程序：
 
 ```sh
 sudo rm -rf /Library/Developer/CommandLineTools
@@ -54,14 +54,14 @@ xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-安装完成后，将 Homebrew 添加到环境变量：
+安装完成后，将 Homebrew 添加到环境变量。以下路径适用于 Apple Silicon；Intel Mac 请将 `/opt/homebrew` 替换为 `/usr/local`：
 
 ```sh
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-## 安装常用软件
+## 软件
 
 ### CLI
 
@@ -147,7 +147,28 @@ brew install --cask font-lxgw-wenkai
 brew install --cask font-symbols-only-nerd-font
 ```
 
-### Database / Service
+### Languages
+
+#### Go
+
+参考 [Go 官方安装指南](https://go.dev/doc/install) 安装。
+
+#### Rust
+
+```sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+### Databases
+
+```sh
+# PostgreSQL 18 database server
+brew install postgresql@18
+```
+
+SQLite 是嵌入式数据库，无需后台服务；其安装命令列在 CLI 中。
+
+### Services
 
 ```sh
 # Metrics visualization and monitoring platform
@@ -155,19 +176,35 @@ brew install grafana
 
 # In-memory data store
 brew install redis
-
-# PostgreSQL 18 database server
-brew install postgresql@18
 ```
 
-## Programming Language
-
-### Go
-
-参考 [Go 官方安装指南](https://go.dev/doc/install) 安装。
-
-### Rust
+需要后台运行时，启动 Grafana、Redis 和 PostgreSQL：
 
 ```sh
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+brew services start grafana
+brew services start redis
+brew services start postgresql@18
 ```
+
+## 配置文件
+
+| 配置  | 仓库文件                                       | 目标位置           |
+|-------|------------------------------------------------|--------------------|
+| Git   | `git/gitconfig`                                | `~/.gitconfig`     |
+| SSH   | `ssh/config`                                   | `~/.ssh/config`    |
+| Kitty | `kitty/kitty.conf`、`kitty/current-theme.conf` | `~/.config/kitty/` |
+| Yazi  | `yazi/yazi.toml`、`yazi/init.lua`              | `~/.config/yazi/`  |
+
+在仓库根目录运行以下命令，链接配置文件到对应位置。若目标位置已有文件，`ln -s` 会报错，不会覆盖现有配置：
+
+```sh
+mkdir -p ~/.ssh ~/.config/kitty ~/.config/yazi
+ln -s "$PWD/git/gitconfig" ~/.gitconfig
+ln -s "$PWD/ssh/config" ~/.ssh/config
+ln -s "$PWD/kitty/kitty.conf" ~/.config/kitty/kitty.conf
+ln -s "$PWD/kitty/current-theme.conf" ~/.config/kitty/current-theme.conf
+ln -s "$PWD/yazi/yazi.toml" ~/.config/yazi/yazi.toml
+ln -s "$PWD/yazi/init.lua" ~/.config/yazi/init.lua
+```
+
+使用 Git 配置前，检查其中的用户名和邮箱是否适合当前机器及仓库。SSH 私钥、密码和令牌不要提交到此仓库。
