@@ -91,7 +91,7 @@ brew install jq
 brew install jless
 
 # Work with Protocol Buffers
-brew install buf
+brew install bufbuild/buf/buf
 
 # Embedded SQL database and command-line tool
 brew install sqlite
