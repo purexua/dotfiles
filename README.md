@@ -57,7 +57,6 @@ xcode-select --install
 安装完成后，将 Homebrew 添加到环境变量。以下路径适用于 Apple Silicon；Intel Mac 请将 `/opt/homebrew` 替换为 `/usr/local`：
 
 ```sh
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
@@ -215,12 +214,13 @@ brew services start victorialogs
 
 ## 配置文件
 
-| 配置  | 仓库文件                                       | 目标位置           |
-|-------|------------------------------------------------|--------------------|
-| Git   | `git/gitconfig`                                | `~/.gitconfig`     |
-| SSH   | `ssh/config`                                   | `~/.ssh/config`    |
-| Kitty | `kitty/kitty.conf`、`kitty/current-theme.conf` | `~/.config/kitty/` |
-| Yazi  | `yazi/yazi.toml`、`yazi/init.lua`              | `~/.config/yazi/`  |
+| 配置  | 仓库文件                                       | 目标位置                  |
+|-------|------------------------------------------------|---------------------------|
+| Git   | `git/gitconfig`                                | `~/.gitconfig`            |
+| SSH   | `ssh/config`                                   | `~/.ssh/config`           |
+| Zsh   | `zsh/.zshrc`、`zsh/.zprofile`                  | `~/.zshrc`、`~/.zprofile` |
+| Kitty | `kitty/kitty.conf`、`kitty/current-theme.conf` | `~/.config/kitty/`        |
+| Yazi  | `yazi/yazi.toml`、`yazi/init.lua`              | `~/.config/yazi/`         |
 
 在仓库根目录运行以下命令，链接配置文件到对应位置。若目标位置已有文件，`ln -s` 会报错，不会覆盖现有配置：
 
@@ -228,6 +228,8 @@ brew services start victorialogs
 mkdir -p ~/.ssh ~/.config/kitty ~/.config/yazi
 ln -s "$PWD/git/gitconfig" ~/.gitconfig
 ln -s "$PWD/ssh/config" ~/.ssh/config
+ln -s "$PWD/zsh/.zshrc" ~/.zshrc
+ln -s "$PWD/zsh/.zprofile" ~/.zprofile
 ln -s "$PWD/kitty/kitty.conf" ~/.config/kitty/kitty.conf
 ln -s "$PWD/kitty/current-theme.conf" ~/.config/kitty/current-theme.conf
 ln -s "$PWD/yazi/yazi.toml" ~/.config/yazi/yazi.toml
