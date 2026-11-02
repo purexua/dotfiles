@@ -93,12 +93,6 @@ brew install jless
 # Work with Protocol Buffers
 brew install bufbuild/buf/buf
 
-# Protocol Buffers compiler (protoc)
-brew install protobuf
-
-# Embedded SQL database and command-line tool
-brew install sqlite
-
 # Terminal multiplexer
 brew install tmux
 
@@ -116,6 +110,21 @@ brew install ffmpeg-full
 
 # Full-featured image processing library
 brew install imagemagick-full
+
+# Extract 7z, ZIP, TAR, and other archives
+brew install sevenzip
+
+# Convert and inspect PDF files
+brew install poppler
+
+# SVG rendering library and command-line tool
+brew install resvg
+
+# Terminal file manager
+brew install yazi
+
+# Smarter directory navigation
+brew install zoxide
 ```
 
 ### GUI
@@ -175,15 +184,6 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-### Databases
-
-```sh
-# PostgreSQL 18 database server
-brew install postgresql@18
-```
-
-SQLite 是嵌入式数据库，无需后台服务；其安装命令列在 CLI 中。
-
 ### Services
 
 ```sh
@@ -192,14 +192,25 @@ brew install grafana
 
 # In-memory data store
 brew install redis
+
+# PostgreSQL 18 database server
+brew install postgresql@18
+
+# High-performance time-series database
+brew install victoriametrics
+
+# High-performance log database
+brew install victorialogs
 ```
 
-需要后台运行时，启动 Grafana、Redis 和 PostgreSQL：
+需要后台运行时，启动 Grafana、Redis、PostgreSQL、VictoriaMetrics 和 VictoriaLogs：
 
 ```sh
 brew services start grafana
 brew services start redis
 brew services start postgresql@18
+brew services start victoriametrics
+brew services start victorialogs
 ```
 
 ## 配置文件
