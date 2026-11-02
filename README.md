@@ -10,9 +10,9 @@
 # Disable the press-and-hold accent menu
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-# Reduce the delay before key repeat starts and increase its speed
+# Adjust keyboard repeat
 defaults write -g InitialKeyRepeat -int 10
-defaults write -g KeyRepeat -int 1
+defaults write -g KeyRepeat -int 2
 
 # Disable natural scrolling
 defaults write -g com.apple.swipescrolldirection -bool false
@@ -59,6 +59,24 @@ xcode-select --install
 ```sh
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
+
+### Oh My ZSH 与 Spaceship Prompt
+
+安装 [Oh My Zsh](https://ohmyz.sh)：
+
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+安装 [Spaceship Prompt](https://github.com/spaceship-prompt/spaceship-prompt)：
+
+```sh
+git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+```
+
+仓库中的 [zsh/.zshrc](zsh/.zshrc) 已设置 `ZSH_THEME="spaceship"`。完成配置文件链接后，重启终端或运行 `source ~/.zshrc` 使配置生效。
 
 ## 软件
 
