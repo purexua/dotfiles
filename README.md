@@ -239,19 +239,29 @@ brew services start victorialogs
 | Zsh   | `zsh/.zshrc`、`zsh/.zprofile`                  | `~/.zshrc`、`~/.zprofile` |
 | Kitty | `kitty/kitty.conf`、`kitty/current-theme.conf` | `~/.config/kitty/`        |
 | Yazi  | `yazi/yazi.toml`、`yazi/init.lua`              | `~/.config/yazi/`         |
+| eza   | `eza/theme.yml`                                | `~/.config/eza/theme.yml` |
 
 在仓库根目录运行以下命令，链接配置文件到对应位置。若目标位置已有文件，`ln -s` 会报错，不会覆盖现有配置：
 
 ```sh
-mkdir -p ~/.ssh ~/.config/kitty ~/.config/yazi
 ln -s "$PWD/git/gitconfig" ~/.gitconfig
+
+mkdir -p ~/.ssh
 ln -s "$PWD/ssh/config" ~/.ssh/config
+
 ln -s "$PWD/zsh/.zshrc" ~/.zshrc
 ln -s "$PWD/zsh/.zprofile" ~/.zprofile
+
+mkdir -p ~/.config/kitty
 ln -s "$PWD/kitty/kitty.conf" ~/.config/kitty/kitty.conf
 ln -s "$PWD/kitty/current-theme.conf" ~/.config/kitty/current-theme.conf
+
+mkdir -p ~/.config/yazi
 ln -s "$PWD/yazi/yazi.toml" ~/.config/yazi/yazi.toml
 ln -s "$PWD/yazi/init.lua" ~/.config/yazi/init.lua
+
+mkdir -p ~/.config/eza
+ln -s "$PWD/eza/theme.yml" ~/.config/eza/theme.yml
 ```
 
 使用 Git 配置前，检查其中的用户名和邮箱是否适合当前机器及仓库。SSH 私钥、密码和令牌不要提交到此仓库。
