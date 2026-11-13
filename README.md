@@ -60,13 +60,17 @@ xcode-select --install
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-### Oh My ZSH 与 Spaceship Prompt
+### Zsh
+
+#### Oh My Zsh
 
 安装 [Oh My Zsh](https://ohmyz.sh)：
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+
+#### Spaceship Prompt
 
 安装 [Spaceship Prompt](https://github.com/spaceship-prompt/spaceship-prompt)：
 
@@ -76,7 +80,24 @@ git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 ```
 
-仓库中的 [zsh/.zshrc](zsh/.zshrc) 已设置 `ZSH_THEME="spaceship"`。完成配置文件链接后，重启终端或运行 `source ~/.zshrc` 使配置生效。
+#### zsh-autosuggestions
+
+安装 [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)，根据历史命令提供输入建议：
+
+```sh
+git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+```
+
+#### 启用配置
+
+仓库中的 [zsh/.zshrc](zsh/.zshrc) 已设置以下主题和插件：
+
+```sh
+ZSH_THEME="spaceship"
+plugins=(git zsh-autosuggestions)
+```
+
+重启终端或运行 `source ~/.zshrc` 使配置生效。输入命令时，按右方向键接受建议。
 
 ## 软件
 
