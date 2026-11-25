@@ -163,6 +163,9 @@ brew install yazi
 
 # Smarter directory navigation
 brew install zoxide
+
+# Manage 1Password items from the command line
+brew install 1password-cli
 ```
 
 ### GUI
