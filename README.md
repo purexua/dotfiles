@@ -107,35 +107,14 @@ plugins=(git zsh-autosuggestions)
 # Search files by content
 brew install ripgrep
 
-# Find files and directories
-brew install fd
-
-# Fuzzy finder
-brew install fzf
-
-# Display directory trees
-brew install tree
-
 # List files with icons and Git status
 brew install eza
 
 # View files with syntax highlighting
 brew install bat
 
-# Process JSON data from the command line
-brew install jq
-
-# Explore JSON data interactively
-brew install jless
-
-# Work with Protocol Buffers
-brew install bufbuild/buf/buf
-
 # Terminal multiplexer
 brew install tmux
-
-# Download files over HTTP, HTTPS, and FTP
-brew install wget
 
 # Scan networks and inspect open ports
 brew install nmap
@@ -143,29 +122,8 @@ brew install nmap
 # Static site generator
 brew install hugo
 
-# Full-featured multimedia framework
-brew install ffmpeg-full
-
-# Full-featured image processing library
-brew install imagemagick-full
-
 # Extract 7z, ZIP, TAR, and other archives
 brew install sevenzip
-
-# Convert and inspect PDF files
-brew install poppler
-
-# SVG rendering library and command-line tool
-brew install resvg
-
-# Terminal file manager
-brew install yazi
-
-# Smarter directory navigation
-brew install zoxide
-
-# Manage 1Password items from the command line
-brew install 1password-cli
 ```
 
 ### GUI
@@ -173,9 +131,6 @@ brew install 1password-cli
 ```sh
 # GPU-accelerated terminal emulator
 brew install --cask kitty
-
-# Clipboard manager
-brew install --cask maccy
 
 # API development and testing platform
 brew install --cask postman
@@ -262,7 +217,6 @@ brew services start victorialogs
 | SSH   | `ssh/config`                                   | `~/.ssh/config`           |
 | Zsh   | `zsh/.zshrc`、`zsh/.zprofile`                  | `~/.zshrc`、`~/.zprofile` |
 | Kitty | `kitty/kitty.conf`、`kitty/current-theme.conf` | `~/.config/kitty/`        |
-| Yazi  | `yazi/yazi.toml`、`yazi/init.lua`              | `~/.config/yazi/`         |
 | eza   | `eza/theme.yml`                                | `~/.config/eza/theme.yml` |
 
 在仓库根目录运行以下命令，链接配置文件到对应位置。若目标位置已有文件，`ln -s` 会报错，不会覆盖现有配置：
@@ -279,10 +233,6 @@ ln -s "$PWD/zsh/.zprofile" ~/.zprofile
 mkdir -p ~/.config/kitty
 ln -s "$PWD/kitty/kitty.conf" ~/.config/kitty/kitty.conf
 ln -s "$PWD/kitty/current-theme.conf" ~/.config/kitty/current-theme.conf
-
-mkdir -p ~/.config/yazi
-ln -s "$PWD/yazi/yazi.toml" ~/.config/yazi/yazi.toml
-ln -s "$PWD/yazi/init.lua" ~/.config/yazi/init.lua
 
 mkdir -p ~/.config/eza
 ln -s "$PWD/eza/theme.yml" ~/.config/eza/theme.yml
